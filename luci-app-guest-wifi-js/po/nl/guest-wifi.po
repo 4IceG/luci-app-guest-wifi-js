@@ -207,3 +207,74 @@ msgstr "verwerpen"
 
 msgid "driver default"
 msgstr "standaard van stuurprogramma"
+
+msgid "Password length"
+msgstr "Wachtwoordlengte"
+
+msgid "Minimum length is 8 characters, 13 characters recommended."
+msgstr "De minimale lengte is 8 tekens, 13 tekens aanbevolen."
+
+msgid "Password composition"
+msgstr "Samenstelling van het wachtwoord"
+
+msgid "Character types to use when generating a password."
+msgstr "Tekentypen om te gebruiken bij het genereren van een wachtwoord."
+
+msgid "Uppercase letters"
+msgstr "Hoofdletters"
+
+msgid "Lowercase letters"
+msgstr "Kleine letters"
+
+msgid "Digits"
+msgstr "Cijfers"
+
+msgid "Special characters"
+msgstr "Speciale tekens"
+
+msgid "Select password components..."
+msgstr "Selecteer wachtwoordonderdelen..."
+
+msgid "Generate password"
+msgstr "Wachtwoord genereren"
+
+msgid "Generate"
+msgstr "Genereren"
+
+msgid "QR Code"
+msgstr "QR-code"
+
+msgid ""
+"Generates a QR code with the guest network data (SSID, encryption, "
+"password) so a client device can scan and connect."
+msgstr ""
+"Genereert een QR-code met de gegevens van het gastnetwerk (SSID, "
+"versleuteling, wachtwoord) zodat een clientapparaat kan scannen en "
+"verbinding maken."
+
+msgid "QR Error Correction Code Level"
+msgstr "Foutcorrectieniveau van de QR-code"
+
+msgid "Low"
+msgstr "Laag"
+
+msgid "Medium"
+msgstr "Gemiddeld"
+
+msgid "Quartile"
+msgstr "Kwartiel"
+
+msgid "High"
+msgstr "Hoog"
+
+msgid "Scan this QR code with the client device."
+msgstr "Scan deze QR-code met het clientapparaat."
+
+msgid "Generate guest WiFi QR…"
+msgstr "QR-code voor gast-wifi genereren…"
+
+msgid "Back to settings"
+msgstr "Terug naar instellingen"
+
+msgid "Generate QR…"
+msgstr "QR-code genereren…"

@@ -3,7 +3,9 @@
 'require view';
 'require uci';
 'require ui';
+'require dom';
 'require tools.widgets as widgets';
+'require uqr';
 
 /*
 	Copyright 2026 Rafał Wabik - IceG - From eko.one.pl forum
@@ -106,6 +108,96 @@ let ENCRYPTION_MODES = [
 function encryptionLabel(key) {
 	let hit = ENCRYPTION_MODES.filter(function(m) { return m[0] === key; })[0];
 	return hit ? hit[1] : key;
+}
+
+let PASSWORD_CHARSETS = {
+	upper:   'ABCDEFGHJKLMNPQRSTUVWXYZ',
+	lower:   'abcdefghijkmnpqrstuvwxyz',
+	digits:  '1234567890',
+	special: '!@#$%^&*()-_=+[]{}?'
+};
+
+function secureRandomInt(max) {
+	let cryptoObj = window.crypto || window.msCrypto;
+	let arr = new Uint32Array(1);
+
+	if (cryptoObj && cryptoObj.getRandomValues) {
+		cryptoObj.getRandomValues(arr);
+		return arr[0] % max;
+	}
+
+	return Math.floor(Math.random() * max);
+}
+
+function shuffleArray(arr) {
+	for (let i = arr.length - 1; i > 0; i--) {
+		let j = secureRandomInt(i + 1);
+		let tmp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = tmp;
+	}
+	return arr;
+}
+
+function generateStrongPassword(length, components) {
+	let chosenSets = (components || []).map(function(c) { return PASSWORD_CHARSETS[c]; }).filter(Boolean);
+
+	if (!chosenSets.length)
+		chosenSets = [PASSWORD_CHARSETS.lower, PASSWORD_CHARSETS.digits];
+
+	length = Math.max(parseInt(length, 10) || 0, chosenSets.length);
+	length = Math.min(Math.max(length, 8), 63);
+
+	let pool = chosenSets.join('');
+	let result = chosenSets.map(function(set) { return set.charAt(secureRandomInt(set.length)); });
+
+	for (let i = result.length; i < length; i++)
+		result.push(pool.charAt(secureRandomInt(pool.length)));
+
+	return shuffleArray(result).join('');
+}
+
+let cbiPasswordComponentsValue = form.ListValue.extend({
+	renderWidget: function(section_id, option_index, cfgvalue) {
+		let choices = this.transformChoices();
+		let widget = new ui.Dropdown(
+			(cfgvalue != null) ? cfgvalue : this.default,
+			choices,
+			{
+				id: this.cbid(section_id),
+				sort: this.keylist,
+				optional: true,
+				multiple: true,
+				display_items: 4,
+				dropdown_items: 4,
+				select_placeholder: this.placeholder,
+				validate: L.bind(this.validate, this, section_id),
+				disabled: (this.readonly != null) ? this.readonly : this.map.readonly
+			}
+		);
+
+		window.__guestPasswordComponentsDropdown = window.__guestPasswordComponentsDropdown || {};
+		window.__guestPasswordComponentsDropdown[section_id] = widget;
+
+		return widget.render();
+	}
+});
+
+function buildSVGQRCode(data, code, options, dummy) {
+	let opts = Object.assign({
+		pixelSize: 4,
+		whiteColor: 'white',
+		blackColor: 'black',
+		ecc: 'M'
+	}, options);
+
+	let svg = uqr.renderSVG(data, opts);
+
+	if (dummy)
+		return svg;
+
+	code.style.opacity = '';
+	dom.content(code, Object.assign(E(svg), { style: 'width:100%;height:auto' }));
 }
 
 function assignNetIndexes() {
@@ -677,7 +769,7 @@ return view.extend({
 		o.rmempty = false;
 		o.default = DEFAULTS.dhcpLease;
 
-		o = s.taboption('security', form.Value, 'password', _('Password'));
+		o = s.taboption('security', form.Value, 'password', _('Password'), ' ');
 		o.password = true;
 		o.depends('encryption', 'psk');
 		o.depends('encryption', 'psk2');
@@ -690,6 +782,25 @@ return view.extend({
 		o.modalonly = true;
 		o.validate = function(section_id, value) {
 			let enc = this.map.lookupOption('encryption', section_id)[0].formvalue(section_id);
+
+			let inputEl = document.getElementById(this.cbid(section_id));
+			let strength = inputEl ? inputEl.parentNode.querySelector('.cbi-value-description') : null;
+			let strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g"),
+			    mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g"),
+			    enoughRegex = new RegExp("(?=.{6,}).*", "g");
+
+			if (strength) {
+				if (!value || !value.length)
+					strength.innerHTML = '';
+				else if (false == enoughRegex.test(value))
+					strength.innerHTML = '%s: <span style="color:red">%s</span>'.format(_('Password strength'), _('More Characters'));
+				else if (strongRegex.test(value))
+					strength.innerHTML = '%s: <span style="color:green">%s</span>'.format(_('Password strength'), _('Strong'));
+				else if (mediumRegex.test(value))
+					strength.innerHTML = '%s: <span style="color:orange">%s</span>'.format(_('Password strength'), _('Medium'));
+				else
+					strength.innerHTML = '%s: <span style="color:red">%s</span>'.format(_('Password strength'), _('Weak'));
+			}
 
 			if (!value)
 				return true;
@@ -707,6 +818,202 @@ return view.extend({
 				return _('Password must be at least 8 characters long (WPA-PSK/WPA2-PSK/WPA3-SAE).');
 
 			return true;
+		};
+
+		let passwordDependsOn = function(opt) {
+			opt.depends('encryption', 'psk');
+			opt.depends('encryption', 'psk2');
+			opt.depends('encryption', 'psk-mixed');
+			opt.depends('encryption', 'sae');
+			opt.depends('encryption', 'sae-mixed');
+			opt.depends('encryption', 'wep-open');
+			opt.depends('encryption', 'wep-shared');
+		};
+
+		o = s.taboption('security', form.Value, 'password_length', _('Password length'),
+			_('Minimum length is 8 characters, 13 characters recommended.'));
+		o.datatype = 'range(8,63)';
+		o.default = '13';
+		o.rmempty = true;
+		o.modalonly = true;
+		passwordDependsOn(o);
+
+		o = s.taboption('security', cbiPasswordComponentsValue, 'password_components', _('Password composition'),
+			_('Character types to use when generating a password.'));
+		o.value('upper',   _('Uppercase letters'));
+		o.value('lower',   _('Lowercase letters'));
+		o.value('digits',  _('Digits'));
+		o.value('special', _('Special characters'));
+		o.default = ['upper', 'lower', 'digits', 'special'];
+		o.placeholder = _('Select password components...');
+		o.rmempty = true;
+		o.modalonly = true;
+		passwordDependsOn(o);
+
+		o = s.taboption('security', form.Button, '_password_generate', _('Generate password'));
+		o.inputtitle = _('Generate');
+		o.inputstyle = 'action';
+		o.modalonly = true;
+		passwordDependsOn(o);
+		o.onclick = function(ev, section_id) {
+			let section = this.section;
+			let lengthEl = section.getUIElement(section_id, 'password_length');
+			let componentsEl = section.getUIElement(section_id, 'password_components');
+			let passwordEl = section.getUIElement(section_id, 'password');
+
+			let length = lengthEl ? parseInt(lengthEl.getValue(), 10) : 16;
+			let components = componentsEl ? componentsEl.getValue() : [];
+
+			if (!Array.isArray(components))
+				components = components ? [components] : [];
+
+			let newPassword = generateStrongPassword(length, components);
+
+			if (passwordEl) {
+				passwordEl.setValue(newPassword);
+				if (typeof passwordEl.triggerValidation === 'function')
+					passwordEl.triggerValidation();
+			}
+		};
+
+		o = s.taboption('security', form.DummyValue, '_qrops', _('QR Code'),
+			_('Generates a QR code with the guest network data (SSID, encryption, password) so a client device can scan and connect.'));
+		o.modalonly = true;
+
+		o.createWiFiPassword = function(section_id) {
+			function pctEncode(str) {
+				let bytes = new TextEncoder().encode(str);
+				let out = '';
+
+				for (let i = 0; i < bytes.length; i++) {
+					let b = bytes[i];
+					let printable = (b >= 0x20 && b <= 0x3A && b !== 0x3B) || (b >= 0x3C && b <= 0x7E);
+
+					if (printable)
+						out += String.fromCharCode(b);
+					else
+						out += '%' + b.toString(16).toUpperCase().padStart(2, '0');
+				}
+
+				return out;
+			}
+
+			let wifiSSID = this.section.formvalue(section_id, 'ssid');
+			let wifiEncr = this.section.formvalue(section_id, 'encryption') || '';
+			let wifiKey  = this.section.formvalue(section_id, 'password');
+
+			let trdisable = '';
+			if (wifiEncr === 'sae') trdisable = 0;
+			else if (wifiEncr === 'owe') trdisable = 3;
+
+			return [
+				'WIFI:',
+				(wifiKey) ? 'T:WPA;' : null,
+				(trdisable !== '') ? 'R:' + trdisable + ';' : null,
+				'S:' + wifiSSID + ';',
+				(wifiKey) ? 'P:' + pctEncode(wifiKey) + ';' : null
+			].filter(Boolean).join('') + ';';
+		};
+
+		o.handleGenerateQR = function(section_id, ev) {
+			let parent = s.map;
+			let mapNode = document.querySelector('body.modal-overlay-active > #modal_overlay > .modal.cbi-modal > .cbi-map:not(.hidden)');
+			let headNode = mapNode.parentNode.querySelector('h4');
+			let wifiQRGenerator = this.createWiFiPassword.bind(this, section_id);
+
+			return Promise.all([
+				parent.save(null, true)
+			]).then(function() {
+				let qrm, qrs, qro;
+
+				qrm = new form.JSONMap({ qrcode: {} }, null, _('Scan this QR code with the client device.'));
+				qrm.parent = parent;
+
+				qrs = qrm.section(form.NamedSection, 'qrcode');
+
+				function handleQRParamChange(ev, section_id, value) {
+					let code = this.map.findElement('.qr-code');
+					let conf = this.map.findElement('.wifi-qr-code-content');
+					let ecc = this.section.getUIElement(section_id, 'ecc');
+
+					if (this.isValid(section_id)) {
+						conf.firstChild.data = wifiQRGenerator(section_id);
+						code.style.opacity = '.5';
+						buildSVGQRCode(conf.firstChild.data, code, { ecc: ecc.getValue() });
+					}
+				}
+
+				qro = qrs.option(form.ListValue, 'ecc', _('QR Error Correction Code Level'));
+				qro.value('L', _('Low'));
+				qro.value('M', _('Medium'));
+				qro.value('Q', _('Quartile'));
+				qro.value('H', _('High'));
+				qro.onchange = handleQRParamChange;
+
+				qro = qrs.option(form.DummyValue, 'output');
+				qro.renderWidget = function() {
+					let wifi_qr = wifiQRGenerator(section_id);
+					let ecc = this.section.formvalue(section_id, 'ecc');
+
+					return E('div', {
+						'class': 'qr-code-display',
+						'style': 'display:flex; flex-wrap:wrap; align-items:center; gap:.5em'
+					}, [
+						E('div', { 'class': 'qr-code' }, [
+							E(buildSVGQRCode(wifi_qr, null, { ecc: ecc || undefined }, true))
+						]),
+						E('pre', {
+							'class': 'wifi-qr-code-content',
+							'style': 'flex:1; overflow:auto; word-break:break-all;',
+							'click': function(ev) {
+								let sel = window.getSelection();
+								let range = document.createRange();
+
+								range.selectNodeContents(ev.currentTarget);
+
+								sel.removeAllRanges();
+								sel.addRange(range);
+							}
+						}, [wifi_qr])
+					]);
+				};
+
+				return qrm.render().then(function(nodes) {
+					let dStyle = mapNode.style;
+					mapNode.style.display = 'none';
+
+					let bRowStyle = mapNode.nextElementSibling.style;
+					mapNode.nextElementSibling.style.display = 'none';
+
+					headNode.appendChild(E('span', [' » ', _('Generate guest WiFi QR…')]));
+					mapNode.parentNode.appendChild(E([], [
+						nodes,
+						E('div', { 'class': 'right' }, [
+							E('button', {
+								'class': 'btn',
+								'click': function() {
+									nodes.parentNode.removeChild(nodes.nextSibling);
+									nodes.parentNode.removeChild(nodes);
+									mapNode.style = dStyle;
+									mapNode.nextSibling.style = bRowStyle;
+									headNode.removeChild(headNode.lastChild);
+								}
+							}, [_('Back to settings')])
+						])
+					]));
+				});
+			});
+		};
+
+		o.cfgvalue = function(section_id) {
+			return E('button', {
+				'class': 'btn qr-code',
+				'style': 'display:inline-flex;align-items:center;gap:.5em',
+				'click': ui.createHandlerFn(this, 'handleGenerateQR', section_id)
+			}, [
+				E(buildSVGQRCode('openwrt.org', null, { pixelSize: 1, ecc: 'L' }, true)),
+				_('Generate QR…')
+			]);
 		};
 
 		o = s.taboption('security', form.ListValue, 'isolate', _('Client isolation'),

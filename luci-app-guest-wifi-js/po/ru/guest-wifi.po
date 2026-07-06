@@ -208,3 +208,73 @@ msgstr "сбрасывать"
 
 msgid "driver default"
 msgstr "по умолчанию для драйвера"
+
+msgid "Password length"
+msgstr "Длина пароля"
+
+msgid "Minimum length is 8 characters, 13 characters recommended."
+msgstr "Минимальная длина — 8 символов, рекомендуется 13."
+
+msgid "Password composition"
+msgstr "Состав пароля"
+
+msgid "Character types to use when generating a password."
+msgstr "Типы символов, используемые при генерации пароля."
+
+msgid "Uppercase letters"
+msgstr "Заглавные буквы"
+
+msgid "Lowercase letters"
+msgstr "Строчные буквы"
+
+msgid "Digits"
+msgstr "Цифры"
+
+msgid "Special characters"
+msgstr "Специальные символы"
+
+msgid "Select password components..."
+msgstr "Выберите составляющие пароля..."
+
+msgid "Generate password"
+msgstr "Генерация пароля"
+
+msgid "Generate"
+msgstr "Сгенерировать"
+
+msgid "QR Code"
+msgstr "QR-код"
+
+msgid ""
+"Generates a QR code with the guest network data (SSID, encryption, "
+"password) so a client device can scan and connect."
+msgstr ""
+"Создаёт QR-код с данными гостевой сети (SSID, шифрование, пароль), чтобы "
+"клиентское устройство могло отсканировать его и подключиться."
+
+msgid "QR Error Correction Code Level"
+msgstr "Уровень коррекции ошибок QR-кода"
+
+msgid "Low"
+msgstr "Низкий"
+
+msgid "Medium"
+msgstr "Средний"
+
+msgid "Quartile"
+msgstr "Квартильный"
+
+msgid "High"
+msgstr "Высокий"
+
+msgid "Scan this QR code with the client device."
+msgstr "Отсканируйте этот QR-код с помощью клиентского устройства."
+
+msgid "Generate guest WiFi QR…"
+msgstr "Создание QR-кода гостевой Wi-Fi сети…"
+
+msgid "Back to settings"
+msgstr "Вернуться к настройкам"
+
+msgid "Generate QR…"
+msgstr "Создать QR-код…"

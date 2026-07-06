@@ -207,3 +207,74 @@ msgstr "verwerfen"
 
 msgid "driver default"
 msgstr "Treibervorgabe"
+
+msgid "Password length"
+msgstr "Passwortlänge"
+
+msgid "Minimum length is 8 characters, 13 characters recommended."
+msgstr "Die Mindestlänge beträgt 8 Zeichen, empfohlen werden 13."
+
+msgid "Password composition"
+msgstr "Passwortzusammensetzung"
+
+msgid "Character types to use when generating a password."
+msgstr "Zeichentypen, die bei der Erstellung eines Passworts verwendet werden."
+
+msgid "Uppercase letters"
+msgstr "Großbuchstaben"
+
+msgid "Lowercase letters"
+msgstr "Kleinbuchstaben"
+
+msgid "Digits"
+msgstr "Ziffern"
+
+msgid "Special characters"
+msgstr "Sonderzeichen"
+
+msgid "Select password components..."
+msgstr "Passwortkomponenten auswählen..."
+
+msgid "Generate password"
+msgstr "Passwort generieren"
+
+msgid "Generate"
+msgstr "Generieren"
+
+msgid "QR Code"
+msgstr "QR-Code"
+
+msgid ""
+"Generates a QR code with the guest network data (SSID, encryption, "
+"password) so a client device can scan and connect."
+msgstr ""
+"Erzeugt einen QR-Code mit den Daten des Gastnetzwerks (SSID, "
+"Verschlüsselung, Passwort), damit ein Client-Gerät ihn scannen und sich "
+"verbinden kann."
+
+msgid "QR Error Correction Code Level"
+msgstr "Fehlerkorrekturstufe des QR-Codes"
+
+msgid "Low"
+msgstr "Niedrig"
+
+msgid "Medium"
+msgstr "Mittel"
+
+msgid "Quartile"
+msgstr "Quartil"
+
+msgid "High"
+msgstr "Hoch"
+
+msgid "Scan this QR code with the client device."
+msgstr "Scannen Sie diesen QR-Code mit dem Client-Gerät."
+
+msgid "Generate guest WiFi QR…"
+msgstr "QR-Code für Gast-WLAN wird erzeugt…"
+
+msgid "Back to settings"
+msgstr "Zurück zu den Einstellungen"
+
+msgid "Generate QR…"
+msgstr "QR-Code generieren…"

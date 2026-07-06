@@ -204,3 +204,73 @@ msgstr "drop (破棄)"
 
 msgid "driver default"
 msgstr "ドライバーのデフォルト値"
+
+msgid "Password length"
+msgstr "パスワードの長さ"
+
+msgid "Minimum length is 8 characters, 13 characters recommended."
+msgstr "最小長は8文字です。13文字を推奨します。"
+
+msgid "Password composition"
+msgstr "パスワードの構成"
+
+msgid "Character types to use when generating a password."
+msgstr "パスワード生成時に使用する文字の種類。"
+
+msgid "Uppercase letters"
+msgstr "大文字"
+
+msgid "Lowercase letters"
+msgstr "小文字"
+
+msgid "Digits"
+msgstr "数字"
+
+msgid "Special characters"
+msgstr "特殊文字"
+
+msgid "Select password components..."
+msgstr "パスワードの構成要素を選択..."
+
+msgid "Generate password"
+msgstr "パスワードの生成"
+
+msgid "Generate"
+msgstr "生成"
+
+msgid "QR Code"
+msgstr "QRコード"
+
+msgid ""
+"Generates a QR code with the guest network data (SSID, encryption, "
+"password) so a client device can scan and connect."
+msgstr ""
+"ゲストネットワークのデータ(SSID、暗号化方式、パスワード)を含むQRコードを"
+"生成し、クライアント端末でスキャンして接続できるようにします。"
+
+msgid "QR Error Correction Code Level"
+msgstr "QRコードの誤り訂正レベル"
+
+msgid "Low"
+msgstr "低"
+
+msgid "Medium"
+msgstr "中"
+
+msgid "Quartile"
+msgstr "四分位"
+
+msgid "High"
+msgstr "高"
+
+msgid "Scan this QR code with the client device."
+msgstr "クライアント端末でこのQRコードをスキャンしてください。"
+
+msgid "Generate guest WiFi QR…"
+msgstr "ゲストWi-Fi用QRコードを生成中…"
+
+msgid "Back to settings"
+msgstr "設定に戻る"
+
+msgid "Generate QR…"
+msgstr "QRコードを生成…"

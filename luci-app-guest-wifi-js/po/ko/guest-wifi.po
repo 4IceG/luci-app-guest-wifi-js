@@ -203,3 +203,73 @@ msgstr "버림 (drop)"
 
 msgid "driver default"
 msgstr "드라이버 기본값"
+
+msgid "Password length"
+msgstr "비밀번호 길이"
+
+msgid "Minimum length is 8 characters, 13 characters recommended."
+msgstr "최소 길이는 8자이며, 13자를 권장합니다."
+
+msgid "Password composition"
+msgstr "비밀번호 구성"
+
+msgid "Character types to use when generating a password."
+msgstr "비밀번호를 생성할 때 사용할 문자 유형입니다."
+
+msgid "Uppercase letters"
+msgstr "대문자"
+
+msgid "Lowercase letters"
+msgstr "소문자"
+
+msgid "Digits"
+msgstr "숫자"
+
+msgid "Special characters"
+msgstr "특수 문자"
+
+msgid "Select password components..."
+msgstr "비밀번호 구성 요소 선택..."
+
+msgid "Generate password"
+msgstr "비밀번호 생성"
+
+msgid "Generate"
+msgstr "생성"
+
+msgid "QR Code"
+msgstr "QR 코드"
+
+msgid ""
+"Generates a QR code with the guest network data (SSID, encryption, "
+"password) so a client device can scan and connect."
+msgstr ""
+"클라이언트 기기가 스캔하여 연결할 수 있도록 게스트 네트워크 데이터(SSID, "
+"암호화, 비밀번호)가 포함된 QR 코드를 생성합니다."
+
+msgid "QR Error Correction Code Level"
+msgstr "QR 코드 오류 수정 수준"
+
+msgid "Low"
+msgstr "낮음"
+
+msgid "Medium"
+msgstr "보통"
+
+msgid "Quartile"
+msgstr "사분위"
+
+msgid "High"
+msgstr "높음"
+
+msgid "Scan this QR code with the client device."
+msgstr "클라이언트 기기로 이 QR 코드를 스캔하세요."
+
+msgid "Generate guest WiFi QR…"
+msgstr "게스트 Wi-Fi QR 코드 생성 중…"
+
+msgid "Back to settings"
+msgstr "설정으로 돌아가기"
+
+msgid "Generate QR…"
+msgstr "QR 코드 생성…"

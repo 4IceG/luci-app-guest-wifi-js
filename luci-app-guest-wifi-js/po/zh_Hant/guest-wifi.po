@@ -201,3 +201,73 @@ msgstr "丟棄"
 
 msgid "driver default"
 msgstr "驅動程式預設"
+
+msgid "Password length"
+msgstr "密碼長度"
+
+msgid "Minimum length is 8 characters, 13 characters recommended."
+msgstr "最小長度為8個字元,建議使用13個字元。"
+
+msgid "Password composition"
+msgstr "密碼組成"
+
+msgid "Character types to use when generating a password."
+msgstr "產生密碼時使用的字元類型。"
+
+msgid "Uppercase letters"
+msgstr "大寫字母"
+
+msgid "Lowercase letters"
+msgstr "小寫字母"
+
+msgid "Digits"
+msgstr "數字"
+
+msgid "Special characters"
+msgstr "特殊字元"
+
+msgid "Select password components..."
+msgstr "選擇密碼組成部分..."
+
+msgid "Generate password"
+msgstr "產生密碼"
+
+msgid "Generate"
+msgstr "產生"
+
+msgid "QR Code"
+msgstr "QR code"
+
+msgid ""
+"Generates a QR code with the guest network data (SSID, encryption, "
+"password) so a client device can scan and connect."
+msgstr ""
+"產生包含訪客網路資料(SSID、加密方式、密碼)的 QR code,以便客戶端裝置"
+"掃描並連線。"
+
+msgid "QR Error Correction Code Level"
+msgstr "QR code 錯誤更正等級"
+
+msgid "Low"
+msgstr "低"
+
+msgid "Medium"
+msgstr "中"
+
+msgid "Quartile"
+msgstr "四分位"
+
+msgid "High"
+msgstr "高"
+
+msgid "Scan this QR code with the client device."
+msgstr "請使用客戶端裝置掃描此 QR code。"
+
+msgid "Generate guest WiFi QR…"
+msgstr "正在產生訪客 Wi-Fi QR code…"
+
+msgid "Back to settings"
+msgstr "返回設定"
+
+msgid "Generate QR…"
+msgstr "產生 QR code…"

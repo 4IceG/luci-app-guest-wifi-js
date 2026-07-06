@@ -204,3 +204,73 @@ msgstr "zahodit"
 
 msgid "driver default"
 msgstr "výchozí ovladače"
+
+msgid "Password length"
+msgstr "Délka hesla"
+
+msgid "Minimum length is 8 characters, 13 characters recommended."
+msgstr "Minimální délka je 8 znaků, doporučeno 13."
+
+msgid "Password composition"
+msgstr "Skladba hesla"
+
+msgid "Character types to use when generating a password."
+msgstr "Typy znaků použité při generování hesla."
+
+msgid "Uppercase letters"
+msgstr "Velká písmena"
+
+msgid "Lowercase letters"
+msgstr "Malá písmena"
+
+msgid "Digits"
+msgstr "Číslice"
+
+msgid "Special characters"
+msgstr "Speciální znaky"
+
+msgid "Select password components..."
+msgstr "Vyberte složky hesla..."
+
+msgid "Generate password"
+msgstr "Generování hesla"
+
+msgid "Generate"
+msgstr "Generovat"
+
+msgid "QR Code"
+msgstr "QR kód"
+
+msgid ""
+"Generates a QR code with the guest network data (SSID, encryption, "
+"password) so a client device can scan and connect."
+msgstr ""
+"Vygeneruje QR kód s údaji hostovské sítě (SSID, šifrování, heslo), díky "
+"kterému může klientské zařízení naskenovat kód a připojit se."
+
+msgid "QR Error Correction Code Level"
+msgstr "Úroveň korekce chyb QR kódu"
+
+msgid "Low"
+msgstr "Nízká"
+
+msgid "Medium"
+msgstr "Střední"
+
+msgid "Quartile"
+msgstr "Kvartilní"
+
+msgid "High"
+msgstr "Vysoká"
+
+msgid "Scan this QR code with the client device."
+msgstr "Naskenujte tento QR kód klientským zařízením."
+
+msgid "Generate guest WiFi QR…"
+msgstr "Generování QR kódu hostovské Wi-Fi…"
+
+msgid "Back to settings"
+msgstr "Zpět na nastavení"
+
+msgid "Generate QR…"
+msgstr "Generovat QR kód…"

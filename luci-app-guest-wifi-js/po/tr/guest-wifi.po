@@ -206,3 +206,73 @@ msgstr "düşür"
 
 msgid "driver default"
 msgstr "sürücü varsayılanı"
+
+msgid "Password length"
+msgstr "Parola uzunluğu"
+
+msgid "Minimum length is 8 characters, 13 characters recommended."
+msgstr "Minimum uzunluk 8 karakterdir, 13 karakter önerilir."
+
+msgid "Password composition"
+msgstr "Parola bileşimi"
+
+msgid "Character types to use when generating a password."
+msgstr "Parola oluştururken kullanılacak karakter türleri."
+
+msgid "Uppercase letters"
+msgstr "Büyük harfler"
+
+msgid "Lowercase letters"
+msgstr "Küçük harfler"
+
+msgid "Digits"
+msgstr "Rakamlar"
+
+msgid "Special characters"
+msgstr "Özel karakterler"
+
+msgid "Select password components..."
+msgstr "Parola bileşenlerini seçin..."
+
+msgid "Generate password"
+msgstr "Parola oluştur"
+
+msgid "Generate"
+msgstr "Oluştur"
+
+msgid "QR Code"
+msgstr "QR Kodu"
+
+msgid ""
+"Generates a QR code with the guest network data (SSID, encryption, "
+"password) so a client device can scan and connect."
+msgstr ""
+"İstemci cihazın tarayıp bağlanabilmesi için misafir ağı verileriyle "
+"(SSID, şifreleme, parola) bir QR kodu oluşturur."
+
+msgid "QR Error Correction Code Level"
+msgstr "QR Kodu Hata Düzeltme Seviyesi"
+
+msgid "Low"
+msgstr "Düşük"
+
+msgid "Medium"
+msgstr "Orta"
+
+msgid "Quartile"
+msgstr "Çeyreklik"
+
+msgid "High"
+msgstr "Yüksek"
+
+msgid "Scan this QR code with the client device."
+msgstr "Bu QR kodunu istemci cihazla tarayın."
+
+msgid "Generate guest WiFi QR…"
+msgstr "Misafir Wi-Fi QR kodu oluşturuluyor…"
+
+msgid "Back to settings"
+msgstr "Ayarlara dön"
+
+msgid "Generate QR…"
+msgstr "QR kodu oluştur…"

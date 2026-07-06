@@ -12,8 +12,8 @@ PKG_MAINTAINER:=Rafał Wabik <4Rafal@gmail.com>
 LUCI_DESCRIPTION:=LuCI JS interface for the Guest Wi-Fi
 LUCI_DEPENDS:=+luci-base +firewall4 +dnsmasq
 LUCI_PKGARCH:=all
-PKG_VERSION:=1.0.4
-PKG_RELEASE:=20260705
+PKG_VERSION:=1.0.5
+PKG_RELEASE:=20260706
 
 include $(TOPDIR)/feeds/luci/luci.mk
 

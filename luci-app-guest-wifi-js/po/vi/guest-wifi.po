@@ -206,3 +206,73 @@ msgstr "hủy bỏ"
 
 msgid "driver default"
 msgstr "mặc định của trình điều khiển"
+
+msgid "Password length"
+msgstr "Độ dài mật khẩu"
+
+msgid "Minimum length is 8 characters, 13 characters recommended."
+msgstr "Độ dài tối thiểu là 8 ký tự, khuyến nghị 13 ký tự."
+
+msgid "Password composition"
+msgstr "Thành phần mật khẩu"
+
+msgid "Character types to use when generating a password."
+msgstr "Các loại ký tự được sử dụng khi tạo mật khẩu."
+
+msgid "Uppercase letters"
+msgstr "Chữ hoa"
+
+msgid "Lowercase letters"
+msgstr "Chữ thường"
+
+msgid "Digits"
+msgstr "Chữ số"
+
+msgid "Special characters"
+msgstr "Ký tự đặc biệt"
+
+msgid "Select password components..."
+msgstr "Chọn các thành phần mật khẩu..."
+
+msgid "Generate password"
+msgstr "Tạo mật khẩu"
+
+msgid "Generate"
+msgstr "Tạo"
+
+msgid "QR Code"
+msgstr "Mã QR"
+
+msgid ""
+"Generates a QR code with the guest network data (SSID, encryption, "
+"password) so a client device can scan and connect."
+msgstr ""
+"Tạo mã QR chứa dữ liệu mạng khách (SSID, mã hóa, mật khẩu) để thiết bị "
+"khách có thể quét và kết nối."
+
+msgid "QR Error Correction Code Level"
+msgstr "Mức độ sửa lỗi mã QR"
+
+msgid "Low"
+msgstr "Thấp"
+
+msgid "Medium"
+msgstr "Trung bình"
+
+msgid "Quartile"
+msgstr "Phần tư"
+
+msgid "High"
+msgstr "Cao"
+
+msgid "Scan this QR code with the client device."
+msgstr "Quét mã QR này bằng thiết bị khách."
+
+msgid "Generate guest WiFi QR…"
+msgstr "Đang tạo mã QR Wi-Fi khách…"
+
+msgid "Back to settings"
+msgstr "Quay lại cài đặt"
+
+msgid "Generate QR…"
+msgstr "Tạo mã QR…"

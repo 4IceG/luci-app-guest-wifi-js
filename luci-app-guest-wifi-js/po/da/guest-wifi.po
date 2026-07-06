@@ -207,3 +207,73 @@ msgstr "drop"
 
 msgid "driver default"
 msgstr "driverstandard"
+
+msgid "Password length"
+msgstr "Adgangskodelængde"
+
+msgid "Minimum length is 8 characters, 13 characters recommended."
+msgstr "Minimumslængden er 8 tegn, 13 tegn anbefales."
+
+msgid "Password composition"
+msgstr "Adgangskodesammensætning"
+
+msgid "Character types to use when generating a password."
+msgstr "Tegntyper der bruges ved generering af en adgangskode."
+
+msgid "Uppercase letters"
+msgstr "Store bogstaver"
+
+msgid "Lowercase letters"
+msgstr "Små bogstaver"
+
+msgid "Digits"
+msgstr "Tal"
+
+msgid "Special characters"
+msgstr "Specialtegn"
+
+msgid "Select password components..."
+msgstr "Vælg adgangskodekomponenter..."
+
+msgid "Generate password"
+msgstr "Generer adgangskode"
+
+msgid "Generate"
+msgstr "Generer"
+
+msgid "QR Code"
+msgstr "QR-kode"
+
+msgid ""
+"Generates a QR code with the guest network data (SSID, encryption, "
+"password) so a client device can scan and connect."
+msgstr ""
+"Genererer en QR-kode med gæstenetværkets data (SSID, kryptering, "
+"adgangskode), så en klientenhed kan scanne og oprette forbindelse."
+
+msgid "QR Error Correction Code Level"
+msgstr "Fejlkorrektionsniveau for QR-kode"
+
+msgid "Low"
+msgstr "Lav"
+
+msgid "Medium"
+msgstr "Middel"
+
+msgid "Quartile"
+msgstr "Kvartil"
+
+msgid "High"
+msgstr "Høj"
+
+msgid "Scan this QR code with the client device."
+msgstr "Scan denne QR-kode med klientenheden."
+
+msgid "Generate guest WiFi QR…"
+msgstr "Genererer QR-kode til gæste-WiFi…"
+
+msgid "Back to settings"
+msgstr "Tilbage til indstillinger"
+
+msgid "Generate QR…"
+msgstr "Generer QR-kode…"
