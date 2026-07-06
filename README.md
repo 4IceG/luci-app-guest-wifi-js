@@ -22,7 +22,7 @@ A user interface for easily creating and management isolated Wi-Fi networks for 
 ### <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_United_Kingdom.png" height="24"> Design concept / <img src="https://raw.githubusercontent.com/4IceG/Personal_data/master/dooffy_design_icons_EU_flags_Poland.png" height="24"> Koncepcja wyglądu
 
 ![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/Guest%20Wi-Fi.png?raw=true)
+![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/Guest%20Wi-Fi2.png?raw=true)
 ![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/Guest%20Wi-Fi22.png?raw=true)
-![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/Guest%20Wi-Fi3.png?raw=true)
 ![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/Guest%20Wi-Fi4.png?raw=true)
 ![](https://github.com/4IceG/Personal_data/blob/master/zrzuty/Guest%20Wi-Fi5.png?raw=true)
