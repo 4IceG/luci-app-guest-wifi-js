@@ -111,8 +111,8 @@ function encryptionLabel(key) {
 }
 
 let PASSWORD_CHARSETS = {
-	upper:   'ABCDEFGHJKLMNPQRSTUVWXYZ',
-	lower:   'abcdefghijkmnpqrstuvwxyz',
+	upper:   'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+	lower:   'abcdefghijklmnopqrstuvwxyz',
 	digits:  '1234567890',
 	special: '!@#$%^&*()-_=+[]{}?'
 };
@@ -264,7 +264,7 @@ function randomFreeGuestIp(excludeSid) {
 	}
 
 	if (!candidates.length)
-		return null; //
+		return null;
 
 	return candidates[Math.floor(Math.random() * candidates.length)];
 }
