@@ -2,10 +2,10 @@
 	"luci-app-guest-wifi-js": {
 		"description": "Grant UCI access for guest wifi configuration",
 		"read": {
-			"uci": [ "network", "wireless", "dhcp", "firewall" ]
+			"uci": [ "guestwifi", "network", "wireless", "dhcp", "firewall" ]
 		},
 		"write": {
-			"uci": [ "network", "wireless", "dhcp", "firewall" ]
+			"uci": [ "guestwifi", "network", "wireless", "dhcp", "firewall" ]
 		}
 	}
 }
